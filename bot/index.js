@@ -7,7 +7,7 @@ var secrets = require('/secrets');
 var User = require('./models/User');
 var path = require('path');
 var async = require('async');
-const FB_ACCESS_TOKEN = 'EAABvjrWKCeMBAA5Di9rOmargy1561JqEY6mhCPPiO2kLw82O52LZAAIFbUKaM6ZAiuneVE3z8EIzU6dgWYdqsQNhBFCFIJLCZCcvYNvs42apkPsyJcOjFhXWI0ngRA8QgOxWvsGXN032XB6xKdtY8mbru9zZAwVFdnFZAW1cZC64yD2EuHHkOt';
+const FB_ACCESS_TOKEN = secrets.FB_ACCESS_TOKEN;
 
 var port = process.env.PORT || 5000;
 const APP_HOST = 'https://397b1c37.ngrok.io';
