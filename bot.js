@@ -1,4 +1,4 @@
-const VR_URL = `https://www.qlik.com/`;
+const VR_URL = ``;
 
 var def = (data, done) => {
     data.tools.sendText("Serwus B) Chciałbyś coś wiedzieć o obiekcie w pobliżu Ciebie?", {}, [{
@@ -7,16 +7,36 @@ var def = (data, done) => {
 };
 
 var sendVrBtn = (data, payload) => {
-    data.tools.sendVerticalText("Znalazłem trochę informacji o obiektach wokół Ciebie <3 zlurkuj sobie, niezły odlot ✈️", {}, [{
-        title: "Zobacz!",
-        type: "web_url",
-        url: `${VR_URL}`,
-        messenger_extensions: true
-    }]);
+    var url = `${VR_URL}?lat=${payload.lat}&lon=${payload.lon}`;
+    console.log(url);
+    data.tools.sendText("Znalazłem trochę informacji o obiektach wokół Ciebie <3 zlurkuj sobie, niezły odlot ✈️", {}, [], () => {
+        data.tools.sendOptions({
+            "template_type":"generic",
+            "elements":[{
+                "title":"Wizualizacja VR qlik",
+                "image_url":"https://www.qlik.com/us/-/media/images/qlik/global/qlik-logo-2x.png",
+                "subtitle":"Informacje o obiektach blisko Ciebie",
+                "buttons":[{
+                    "type":"web_url",
+                    "url": url,
+                    "title":"View Website"
+                },{
+                    "type":"postback",
+                    "title":"Start Chatting",
+                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                }]
+            }]
+        });
+    });
 };
 
 var handleLocation = (data, attachments) => {
-    sendVrBtn(data, {lat:attachments[0].payload.coordinates.lat, lng: attachments[0].payload.coordinates.long});
+    try {
+        sendVrBtn(data, {lat:attachments[0].payload.coordinates.lat, lon: attachments[0].payload.coordinates.long});
+    } catch(e) {
+        
+    }
+    
 };
 
 exports.Menu = (data, done) => {
