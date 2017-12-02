@@ -1,4 +1,4 @@
-const VR_URL = ``;
+const VR_URL = `https://wandlee.com/qlikathondemo/`;
 
 var def = (data, done) => {
     data.tools.sendText("Serwus B) Chciałbyś coś wiedzieć o obiekcie w pobliżu Ciebie?", {}, [{
@@ -19,11 +19,9 @@ var sendVrBtn = (data, payload) => {
                 "buttons":[{
                     "type":"web_url",
                     "url": url,
-                    "title":"View Website"
+                    "title":"Tak, pokaż!"
                 },{
-                    "type":"postback",
-                    "title":"Start Chatting",
-                    "payload":"DEVELOPER_DEFINED_PAYLOAD"
+                    "type":"element_share"
                 }]
             }]
         });
