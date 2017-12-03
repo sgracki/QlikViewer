@@ -67,7 +67,7 @@
     </a-scene>
 
     <script>
-        var socket = io.connect('http://89.66.61.251:8010');
+        var socket = io.connect('http://localhost:3000');
         var imgChunks = [];
         socket.on('img-stream-super1', (data) => {
             $('a-image#img-stream1').attr('src', data.img); // jsem nie działało
