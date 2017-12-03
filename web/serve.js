@@ -21,6 +21,6 @@ io.sockets.on('connection', function (socket) {
 
 app.use('/', express.static('./'));
 
-http.listen(3000, function () {
+http.listen(8010, function () {
     console.log('QlikViewer webapp listening on port 3000!');
 });
