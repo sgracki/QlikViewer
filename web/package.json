@@ -1,0 +1,16 @@
+{
+  "name": "qlikviewer",
+  "version": "1.0.0",
+  "description": "qlickathon",
+  "main": "serve.js",
+  "dependencies": {
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node serve.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "github.com/{sgracki, igos, b0dz1o}",
+  "license": "ISC"
+}
