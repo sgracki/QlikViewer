@@ -124,7 +124,7 @@
 
     <body style="background-color: transparent;padding:0;margin:0;overflow:hidden" onload="init()">
         <canvas id="can" height="900" width="1680" style="border:0px solid;"></canvas>
-        <input type="button" value="Wyczyść" id="clr" size="23" onclick="erase()" style="position:absolute;top:25px;right:25px">
+        <input data-html2canvas-ignore type="button" value="Wyczyść" id="clr" size="23" onclick="erase()" style="position:absolute;top:25px;right:25px">
 
         <script>
             var socket = io.connect('http://localhost:3000');
@@ -132,15 +132,15 @@
 
             setInterval(() => {
                 html2canvas(document.body, {
-                    background :'',
+                    background :'transparent',
                     onrendered: function(canvas) {
                         var data = canvas.toDataURL();
-                        socket.emit('img-stream', { img: data });
+                        socket.emit('img-stream', { img: data, roomNo: 1 });
                     },
                     // width: 355,
                     // height: 200
                 });
-            }, 10);
+            }, 5);
         </script>
     </body>
 </html>

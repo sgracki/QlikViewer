@@ -26,8 +26,8 @@
             <img id="cubes-thumb" crossorigin="anonymous" src="./images/drzewa.png">
             <audio id="click-sound" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/audio/click.ogg"></audio>
             <img id="cubes" crossorigin="anonymous" src="https://cdn.aframe.io/360-image-gallery-boilerplate/img/cubes.jpg">
-
-            <img id="img-stream" src="http://static.gamespot.com/uploads/original/450/4509811/2376700-0954986859-res%252.jpg">
+            <img id="img-stream1" src="http://static.gamespot.com/uploads/original/450/4509811/2376700-0954986859-res%252.jpg">
+            <img id="img-stream2" src="http://static.gamespot.com/uploads/original/450/4509811/2376700-0954986859-res%252.jpg">
             <!-- Image link template to be reused. -->
 
             <script id="link" type="text/html">
@@ -48,10 +48,12 @@
 
         <!-- <a-image id="img-stream" src="http://static.gamespot.com/uploads/original/450/4509811/2376700-0954986859-res%252.jpg" width="10" height="5" layout="type: line; margin: 1.5" rotation="10 40 0" position="-4 1 -5"></a-image> -->
         
-        <a-video src="http://89.66.61.251:8080" autoplay="" width="7.9" height="3.8" position="-4 1.2 -5" rotation="0 45 0" scale="" visible="" material="" geometry=""></a-video>
-        <a-image id="img-stream" src="#my-image" material="alphaTest: 0.5" width="10" height="5" rotation="0 45 0" position="-3.8 1 -4.9" scale="0.8 0.8 0.8"></a-image>
+        <a-video src="http://89.66.61.251:8080" autoplay="" width="9" height="4" position="-4 0.3 -5" rotation="0 45 0" scale="" visible="" material="" geometry=""></a-video>
+        <a-image id="img-stream1" src="#my-image1" material="alphaTest: 0.5" width="10" height="5" rotation="0 45 0" position="-3.8 0 -4.9"></a-image>
+        <a-image id="img-stream2" src="#my-image2" material="alphaTest: 0.5" width="10" height="5" rotation="0 -45 0" position="3.8 0 -4.9"></a-image>
+        <!-- <a-curvedimage id="img-xdd" src="http://89.66.61.251:8009" height="6" position="4 1 -5" radius="-5.7" theta-length="102" rotation="0 -60 0" scale="0.8 0.8 0.8"></a-curvedimage> -->
         <!-- Image links. -->
-        <a-entity id="links" layout="type: line; margin: 1.5" position="0 -1 -4">
+        <a-entity id="links" layout="type: line; margin: 1.5" position="0 -2 -4">
             <a-entity template="src: #link" data-src="#cubes" data-thumb="#cubes-thumb"></a-entity>
             <a-entity template="src: #link" data-src="#city" data-thumb="#city-thumb"></a-entity>
         </a-entity>
@@ -67,8 +69,11 @@
     <script>
         var socket = io.connect('http://localhost:3000');
         var imgChunks = [];
-        socket.on('img-stream-super', (data) => {
-            $('a-image#img-stream').attr('src', data.img); // jsem nie działało
+        socket.on('img-stream-super1', (data) => {
+            $('a-image#img-stream1').attr('src', data.img); // jsem nie działało
+        })
+        socket.on('img-stream-super2', (data) => {
+            $('a-image#img-stream2').attr('src', data.img); // jsem nie działało
         })
     </script>
 </body>

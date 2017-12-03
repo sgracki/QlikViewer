@@ -15,7 +15,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('img-stream', function (data) {
         //emit to everyone
         // console.log(data);
-        io.sockets.emit('img-stream-super', data);
+        io.sockets.emit('img-stream-super'+data.roomNo, data);
     })
 });
 
